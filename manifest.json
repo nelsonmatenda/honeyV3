@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Honey v3",
+  "description": "honey v3...",
+  "version": "0.0.1",
+  "permissions": ["activeTab", "tabs"],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["app.js"],
+      "css": ["coupon.css"],
+      "run_at": "document_end"
+    }
+  ],
+  "host_permissions": ["<all_urls>"],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'",
+    "sandbox": "sandbox allow-scripts; script-src 'self' 'https://apis.google.com/' 'https://www.gstatic.com/' 'https://*.firebaseio.com' 'https://www.googleapis.com'; object-src 'self'"
+  }
+}
